@@ -1,20 +1,64 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import React from 'react';
+import { Text,View,StyleSheet} from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import Home from './Home';
 
-export default function App() {
+
+const Search = () => {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
+    <View>
+     <Text>Search</Text>
     </View>
+   
+  ); 
+};
+const Cart=()=>{
+  return(
+    <View>
+     <Text>Cart</Text>
+    </View>
+   
+  );
+};
+const Profile=()=>{
+  return(
+    <View>
+     <Text>Profile</Text>
+    </View>
+  
+  )
+}
+const More =()=>{
+  return(
+    <View>
+     <Text>More</Text>
+    </View>
+  )
+}
+
+
+const Tab= createBottomTabNavigator();
+const App = () => {
+  return (
+    <NavigationContainer>
+      <Tab.Navigator >
+        <Tab.Screen options={{headerShown:false,}} name="Home" component={Home} />
+        <Tab.Screen name="Search" component={Search}/>
+        <Tab.Screen name="Cart" component={Cart} />
+        <Tab.Screen name="Profile" component={Profile}/>
+        <Tab.Screen name="More" component={More}/>
+      </Tab.Navigator>
+    </NavigationContainer>
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+export default App;
+const styles= StyleSheet.create({
+  container:{
+    flex:1,
+
+
   },
+  
 });
